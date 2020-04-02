@@ -1,12 +1,28 @@
 // import { Link } from "wouter";
-import React from "react";
+import React, { useReducer } from "react";
 import Nav from "../../../components/NavBar/Navbar";
+import { reducer, init } from "../reducer";
 
-const Login = () => {
+const Login = ({UserContext, initial}) => {
+  const [username, setUsername] = useReducer(reducer, initial, init);
+
+  const onChangeHandler = ({name, value}) => {
+    setUsername({username: name});
+  }
   return (
     <div>
       <Nav/>
       <h1>Login</h1>
+      <div>
+        <form>
+          <input type="text"
+                 name="user_name"
+                 placeholder="User Name" onChange={onChangeHandler} />
+          <input type="password"
+                 name="password1"
+                 placeholder="Password"/>
+        </form>
+      </div>
     </div>
   )
 };
