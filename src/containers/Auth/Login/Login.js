@@ -3,11 +3,11 @@ import React, { useReducer } from "react";
 import Nav from "../../../components/NavBar/Navbar";
 import { reducer, init } from "../reducer";
 
-const Login = ({UserContext, initial}) => {
-  const [username, setUsername] = useReducer(reducer, initial, init);
+const Login = (props) => {
+  //const [username, setUsername] = useReducer(reducer, props, init);
 
   const onChangeHandler = (e) => {
-    setUsername({type: 'addUsername', username: e.target.value});
+    //setUsername({type: 'addUsername', username: e.target.value});
   }
   return (
     <div>
@@ -27,4 +27,4 @@ const Login = ({UserContext, initial}) => {
   )
 };
 
-export default Login;
+export { Login} ;

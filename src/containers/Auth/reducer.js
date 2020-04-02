@@ -1,8 +1,12 @@
 const init = (usernames) =>{
     return {username: usernames};
   };
+
+const initialValues = {
+    initialValues: {username: ''}
+};
   
- const reducer = (state = init, action) => {
+ const reducer = (state = initialValues, action) => {
     switch (action.type) {
       case 'addUsername':
         state.username = action.username;
@@ -10,4 +14,4 @@ const init = (usernames) =>{
     }
   }
 
-export { reducer, init };
+export { reducer, init, initialValues };

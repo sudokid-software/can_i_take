@@ -3,8 +3,8 @@ import React, { useReducer } from "react";
 import Nav from "../../../components/NavBar/Navbar";
 import { reducer, init } from "../reducer";
 
-const Register = ({initial}) => {
-  // const [username, setUsername] = useReducer(reducer, initial, init);
+const Register = (props) => {
+  //const [username, setUsername] = useReducer(reducer, props, init);
   return (
     <div>
       <Nav/>
@@ -30,4 +30,4 @@ const Register = ({initial}) => {
   )
 };
 
-export default Register;
+export { Register };
