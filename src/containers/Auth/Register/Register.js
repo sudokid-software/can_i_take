@@ -1,5 +1,5 @@
 // import { Link } from "wouter";
-import React, { useReducer } from "react";
+import React, { useReducer, useRef } from "react";
 import Nav from "../../../components/NavBar/Navbar";
 import { reducer, init } from "./reducer";
 
@@ -15,10 +15,10 @@ const Register = (props) => {
     setFormData({type: 'UPDATE_FORM', name: e.target.name, value: e.target.value});
   };
 
-  const handleClick = (event) => {
+  const handleClick = async (event) => {
     event.preventDefault();
     console.log('FormData:', formData);
-    setFormData({type: 'ERROR', value: 'INVALID DATA'})
+    setFormData({type: 'ERROR', value: 'INVALID DATA'});
     // console.log("UserName", username);
     // console.log('Email', email);
     // console.log('Password1', password1);
