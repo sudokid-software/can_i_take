@@ -3,11 +3,11 @@ import React, { useReducer, useRef } from "react";
 import Nav from "../../../components/NavBar/Navbar";
 import { reducer, init } from "../reducer";
 
-const Register = ({initial}) => {
-  const [username, setUsername] = useReducer(reducer, initial, init);
-  const [email, setEmail] = useReducer(reducer, initial, init);
-  const [password1, setPassword1] = useReducer(reducer, initial, init);
-  const [password2, setPassword2] = useReducer(reducer, initial, init);
+const Register = (props) => {
+  const [username, setUsername] = useReducer(reducer, props, init);
+  const [email, setEmail] = useReducer(reducer, props, init);
+  const [password1, setPassword1] = useReducer(reducer, props, init);
+  const [password2, setPassword2] = useReducer(reducer, props, init);
   const form = useRef(null);
   let errors = useRef(false);
 
@@ -64,4 +64,4 @@ const Register = ({initial}) => {
   )
 };
 
-export default Register;
+export { Register };
