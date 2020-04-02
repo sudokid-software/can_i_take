@@ -1,5 +1,5 @@
-// import { Link } from "wouter";
-import React, { useReducer, useRef } from "react";
+// import { } from "wouter";
+import React, { useReducer, useState, useRef } from "react";
 import Nav from "../../../components/NavBar/Navbar";
 import { reducer, init } from "./reducer";
 
@@ -9,7 +9,7 @@ const Register = (props) => {
   console.log(props);
   const [formData, setFormData] = useReducer(reducer, props, init);
   const form = useRef(null);
-  let errors = useRef(false);
+  let [error, setError] = useState('');
 
   const onChangeHandler = (e) => {
     setFormData({type: 'UPDATE_FORM', name: e.target.name, value: e.target.value});
@@ -17,34 +17,36 @@ const Register = (props) => {
 
   const handleClick = async (event) => {
     event.preventDefault();
-    console.log('FormData:', formData);
-    setFormData({type: 'ERROR', value: 'INVALID DATA'});
-    // console.log("UserName", username);
-    // console.log('Email', email);
-    // console.log('Password1', password1);
-    // console.log('Password2', password2);
-    //
-    // if (
-    //   username !== '' || email !== '' || password1 !== '' || password2 !== ''
-    // ) {
-    //   errors = 'Please fill out the full form';
-    //   return;
-    // }
-    //
-    // if (password1 !== password2) {
-    //   errors = 'Please make sure that your passwords match';
-    //   return;
-    // }
-    //
-    // errors = false;
-    // form.current.reset()
+
+    fetch('/manifest.json')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
+
+    const {username, email, password1, password2} = formData;
+    if (
+      username === '' || email === '' || password1 === '' || password2 === ''
+    ) {
+      return setError('Missing fields');
+    } else if (password1 !== password2) {
+      return setError('Please make sure that your passwords match');
+    }
+
+    setError('');
+    // document
+    window.location.href = window.location.origin + '/main'
   };
 
   return (
     <div>
       <Nav/>
       <div>
-        <form>
+        <h1>Register</h1>
+        {error !== ''?<span>{error}</span>:<span/>}
+        <form ref={form}>
           <input type="text"
                  name="username"
                  placeholder="User Name"

@@ -13,6 +13,7 @@ const App = () => {
     <Switch>
       <Route path="/register" component={() => <Register initialValues={registerInit()} /> }/>
       <Route path="/login" component={() => <Login initialValues={registerInit()} /> } />
+      <Route path="/main" component={() => <Login initialValues={registerInit()} /> } />
       <Route path="/" component={Home}/>
     </Switch>
   )
