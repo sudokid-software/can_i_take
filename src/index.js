@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+
+import App from './containers/App/App';
+
 import * as serviceWorker from './serviceWorker';
 import { initializeFirebase } from './push-notification';
 
-import './index.scss';
+// push global styling assets away from the soruce code
+import './assets/styles/index.scss';
 
 ReactDOM.render(
   <React.StrictMode>

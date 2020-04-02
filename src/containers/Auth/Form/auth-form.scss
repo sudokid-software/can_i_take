@@ -1,0 +1,28 @@
+.auth-form {
+  display: flex;
+  flex-wrap: wrap;
+
+  &--heading {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: none; // a11y
+  }
+
+  input {
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 15px;
+    border-width: 0; // reset
+  }
+}

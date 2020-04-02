@@ -1,9 +1,11 @@
-import React, { useReducer} from 'react';
+import React from 'react';
 import { Route, Switch } from "wouter";
-import  Home from "./containers/Home/Home";
-import Register from "./containers/Auth/Register/Register";
-import Login from "./containers/Auth/Login/Login";
-import { init as registerInit } from "./containers/Auth/Register/reducer";
+
+import Home from "../Home/Home";
+import Register from "../Auth/Register/Register";
+import Login from "../Auth/Login/Login";
+
+import { init as registerInit } from "../Auth/Form/auth-form.reducer";
 // import { askForPermissionToReceiveNotifications } from './push-notification';
 
 import './App.scss';
