@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import './Navbar.css';
+import './Navbar.scss';
 import React from "react";
 
 const Nav = () => {

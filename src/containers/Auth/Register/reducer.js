@@ -33,4 +33,4 @@ const initialValues = {
   }
 };
 
-export { reducer, init, initialValues };
+export { reducer, init };
