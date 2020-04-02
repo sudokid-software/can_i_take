@@ -1,11 +1,15 @@
 // import { Link } from "wouter";
-import React from "react";
+import React, { useReducer } from "react";
 import Nav from "../../../components/NavBar/Navbar";
+import { reducer, init } from "../reducer";
 
-const Register = () => {
+const Register = ({initial}) => {
+  //const [username, setUsername] = useReducer(reducer, initial, init);
   return (
     <div>
       <Nav/>
+
+      {/* {username} */}
       <div>
         <form>
           <input type="text"
