@@ -4,8 +4,8 @@ import { Route, Switch } from "wouter";
 import  Home from "./containers/Home/Home";
 import { Register } from "./containers/Auth/Register/Register";
 import { Login } from "./containers/Auth/Login/Login";
-import { initialValues } from './containers/Auth/reducer';
-import { reducer, init } from "./containers/Auth/reducer";
+import { initialValues } from './containers/Auth/Register/reducer';
+import { reducer, init } from "./containers/Auth/Register/reducer";
 // import { askForPermissionToReceiveNotifications } from './push-notification';
 const App = () => {
   const [username, setUsername] = useReducer(reducer, initialValues, init);

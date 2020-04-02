@@ -1,15 +1,11 @@
 // import { Link } from "wouter";
 import React, { useReducer, useRef } from "react";
 import Nav from "../../../components/NavBar/Navbar";
-import { reducer, init } from "../reducer";
+import { reducer, init } from "./reducer";
 
 const Register = (props) => {
   console.log(props);
   const [formData, setFormData] = useReducer(reducer, props, init);
-  // const [username, setUsername] = useReducer(reducer, props, init);
-  // const [email, setEmail] = useReducer(reducer, props, init);
-  // const [password1, setPassword1] = useReducer(reducer, props, init);
-  // const [password2, setPassword2] = useReducer(reducer, props, init);
   const form = useRef(null);
   let errors = useRef(false);
 
@@ -20,6 +16,7 @@ const Register = (props) => {
   const handleClick = (event) => {
     event.preventDefault();
     console.log('FormData:', formData);
+    setFormData({type: 'ERROR', value: 'INVALID DATA'})
     // console.log("UserName", username);
     // console.log('Email', email);
     // console.log('Password1', password1);
@@ -44,25 +41,28 @@ const Register = (props) => {
   return (
     <div>
       <Nav/>
-
       <div>
         <form>
           <input type="text"
                  name="username"
                  placeholder="User Name"
-                 onChange={onChangeHandler} />
+                 onChange={onChangeHandler}
+                 required />
           <input type="text"
                  name="email"
                  placeholder="Email"
-                 onChange={onChangeHandler} />
+                 onChange={onChangeHandler}
+                 required />
           <input type="password"
                  name="password1"
                  placeholder="Password"
-                 onChange={onChangeHandler} />
+                 onChange={onChangeHandler}
+                 required />
           <input type="password"
                  name="password2"
                  placeholder="Password"
-                 onChange={onChangeHandler} />
+                 onChange={onChangeHandler}
+                 required />
           <button onClick={handleClick}>Submit</button>
         </form>
       </div>
