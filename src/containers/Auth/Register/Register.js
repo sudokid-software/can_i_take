@@ -12,12 +12,30 @@ const Register = (props) => {
   let errors = useRef(false);
 
   const onChangeHandler = (e) => {
-    console.log(e);
-    setUsername({type: 'addUsername', username: e.target.value});
+    switch (e.target.name) {
+      case 'username':
+        setUsername({type: 'addUsername', username: e.target.value});
+        return;
+      case 'email':
+        setEmail({type: 'addEmail', username: e.target.value});
+        return;
+      case 'password1':
+        setPassword1({type: 'addPassword1', username: e.target.value});
+        return;
+      case 'password2':
+        setPassword2({type: 'addPassword2', username: e.target.value});
+        return;
+      default:
+        return;
+    }
   };
 
   const handleClick = (event) => {
     event.preventDefault();
+    console.log("UserName", username);
+    console.log('Email', email);
+    console.log('Password1', password1);
+    console.log('Password2', password2);
 
     if (
       username !== '' || email !== '' || password1 !== '' || password2 !== ''
