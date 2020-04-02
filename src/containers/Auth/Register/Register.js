@@ -4,7 +4,7 @@ import Nav from "../../../components/NavBar/Navbar";
 import { reducer, init } from "../reducer";
 
 const Register = ({initial}) => {
-  //const [username, setUsername] = useReducer(reducer, initial, init);
+  // const [username, setUsername] = useReducer(reducer, initial, init);
   return (
     <div>
       <Nav/>
