@@ -1,25 +1,26 @@
 // import { Link } from "wouter";
-import React, { useRef } from "react";
+import React, { useReducer, useRef } from "react";
 import Nav from "../../../components/NavBar/Navbar";
+import { reducer, init } from "../reducer";
 
-const Register = () => {
-  const userNameInput = useRef(null);
-  const emailInput = useRef(null);
-  const password1Input = useRef(null);
-  const password2Input = useRef(null);
+const Register = ({initial}) => {
+  const [username, setUsername] = useReducer(reducer, initial, init);
+  const [email, setEmail] = useReducer(reducer, initial, init);
+  const [password1, setPassword1] = useReducer(reducer, initial, init);
+  const [password2, setPassword2] = useReducer(reducer, initial, init);
   const form = useRef(null);
   let errors = useRef(false);
+
+  const onChangeHandler = ({name, value}) => {
+    console.log(name, value);
+    setUsername({username: name});
+  };
 
   const handleClick = (event) => {
     event.preventDefault();
 
-    const userName = userNameInput.current.value;
-    const email = emailInput.current.value;
-    const password1 = password1Input.current.value;
-    const password2 = password2Input.current.value;
-
     if (
-      userName !== '' || email !== '' || password1 !== '' || password2 !== ''
+      username !== '' || email !== '' || password1 !== '' || password2 !== ''
     ) {
       errors = 'Please fill out the full form';
       return;
@@ -37,25 +38,25 @@ const Register = () => {
   return (
     <div>
       <Nav/>
+
       <div>
-        <form ref={form}>
-          {errors !== false?<span>{errors}</span>:<span></span>}
+        <form>
           <input type="text"
                  name="user_name"
                  placeholder="User Name"
-                 ref={userNameInput}/>
+                 onChange={onChangeHandler} />
           <input type="text"
                  name="email"
                  placeholder="Email"
-                 ref={emailInput}/>
+                 onChange={onChangeHandler} />
           <input type="password"
                  name="password1"
                  placeholder="Password"
-                 ref={password1Input}/>
+                 onChange={onChangeHandler} />
           <input type="password"
                  name="password2"
                  placeholder="Password"
-                 ref={password2Input}/>
+                 onChange={onChangeHandler} />
           <button onClick={handleClick}>Submit</button>
         </form>
       </div>
