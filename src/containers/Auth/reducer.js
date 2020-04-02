@@ -3,12 +3,13 @@ const init = (usernames) =>{
   };
 
 const initialValues = {
-    initialValues: {username: ''}
+    username: ''
 };
   
  const reducer = (state = initialValues, action) => {
     switch (action.type) {
       case 'addUsername':
+        console.log(action);
         state.username = action.username;
         break;
     }
