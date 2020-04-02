@@ -4,6 +4,7 @@ import Nav from "../../../components/NavBar/Navbar";
 import { reducer, init } from "../reducer";
 
 const Register = (props) => {
+  console.log(props);
   const [username, setUsername] = useReducer(reducer, props, init);
   const [email, setEmail] = useReducer(reducer, props, init);
   const [password1, setPassword1] = useReducer(reducer, props, init);

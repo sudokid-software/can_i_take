@@ -1,14 +1,10 @@
 // import { Link } from "wouter";
 import React, { useReducer } from "react";
 import Nav from "../../../components/NavBar/Navbar";
-import { reducer, init } from "../reducer";
 
-const Login = (props) => {
-  //const [username, setUsername] = useReducer(reducer, props, init);
+const Login = ({props, onChangeHandler}) => {
 
-  const onChangeHandler = (e) => {
-    //setUsername({type: 'addUsername', username: e.target.value});
-  }
+  
   return (
     <div>
       <Nav/>
