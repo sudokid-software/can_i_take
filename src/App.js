@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import { Route, Switch } from "wouter";
-import Home from "./components/Home";
-import Register from "./components/Register";
-import Login from "./components/Login";
+import Home from "./containers/Home/Home";
+import Register from "./containers/Auth/Register/Register";
+import Login from "./containers/Auth/Login/Login";
 // import { askForPermissionToReceiveNotifications } from './push-notification';
 
 const App = () => (

@@ -1,6 +1,6 @@
 // import { Link } from "wouter";
 import React from "react";
-import Nav from "./Navbar";
+import Nav from "../../../components/NavBar/Navbar";
 
 const Register = () => {
   return (
