@@ -8,43 +8,70 @@ import "./auth-form.scss";
 const AuthForm = props => {
   const [formData, setFormData] = useReducer(reducer, props, init);
 
-  const setError = (errString = "") => {};
-
-  const onChangeHandler = e => {
-    setFormData({ type: "UPDATE_FORM", name: e.target.name, value: e.target.value });
+  const setError = (errString = "") => {
+    // console.error(errString);
   };
 
-  const onLoginHandler = async event => {
-    event.preventDefault();
-
+  const checkForErrors = () => {
     const { username, email, password1, password2 } = formData;
-    console.log("FormData:", formData);
 
-    fetch("/manifest.json")
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        console.log(data);
-      });
+    // Registration checks
+    if (props.isRegister) {
+      if (username === "" || email === "" || password1 === "" || password2 === "") {
+        return setError("Missing fields");
+      }
 
-    if (username === "" || email === "" || password1 === "" || password2 === "") {
-      return setError("Missing fields");
-    } else if (password1 !== password2) {
-      return setError("Please make sure that your passwords match");
+      if (password1 !== password2) {
+        return setError("Please make sure that your passwords match");
+      }
+      // Login checks
+    } else {
+      if (username === "" || password1 === "") {
+        return setError("Missing fields");
+      }
     }
 
     setError("");
-    // document
-    window.location.href = window.location.origin + "/main";
   };
 
-  const onRegisterHandler = event => {};
+  const onChangeHandler = event => {
+    setFormData({ type: "UPDATE_FORM", name: event.target.name, value: event.target.value });
+  };
+
+  const onSubmitHandler = event => {
+    event.preventDefault();
+
+    checkForErrors();
+
+    if (props.isRegister) {
+      handleRegister();
+    } else {
+      handleLogin();
+    }
+  };
+
+  const handleRegister = () => {};
+
+  const handleLogin = () => {
+    fetch("/manifest.json")
+      .then(res => res.json())
+      .then(res => {
+        console.debug(res);
+
+        // document
+        if(res.statusText === 'OK'){
+          window.location.href = window.location.origin + "/main";
+        }
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
 
   return (
     <form className="auth-form">
       {props.heading ? <h1 className="auth-form--heading">{props.heading}</h1> : null}
-      {/* Registration Email */}
+      {/* Registration Email field */}
       {props.isRegister ? (
         <input type="text" name="email" placeholder="Email" onChange={onChangeHandler} required />
       ) : null}
@@ -62,7 +89,7 @@ const AuthForm = props => {
         onChange={onChangeHandler}
         required
       />
-      {/* Registration password confirmation */}
+      {/* Registration password confirmation field */}
       {props.isRegister ? (
         <input
           type="password"
@@ -72,11 +99,7 @@ const AuthForm = props => {
           required
         />
       ) : null}
-      {props.isRegister ? (
-        <button onClick={onRegisterHandler}>Register</button>
-      ) : (
-        <button onClick={onLoginHandler}>Login</button>
-      )}
+      <button onClick={onSubmitHandler}>{props.isRegister ? "Register" : "Login"}</button>
     </form>
   );
 };
