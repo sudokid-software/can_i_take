@@ -1,9 +1,9 @@
-const init = ({username, email, password1, password2}) =>{
+const init = ({formData}) =>{
     return {
-      username,
-      email,
-      password1,
-      password2
+      username: '',
+      email: '',
+      password1: '',
+      password2: ''
     };
   };
 
@@ -18,11 +18,12 @@ const initialValues = {
   
  const reducer = (state = initialValues, action) => {
   switch (action.type) {
-    case 'addUsername':
-      state.username = action.username;
-      break;
+    case 'UPDATE_FORM':
+      return Object.assign({}, state, {
+        [action.name]: action.value
+      });
     default:
-      break;
+      throw new Error('Invalid action given to register reducer');
   }
 };
 
