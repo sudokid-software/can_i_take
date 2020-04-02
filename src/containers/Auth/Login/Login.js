@@ -23,4 +23,4 @@ const Login = ({props, onChangeHandler}) => {
   )
 };
 
-export { Login} ;
+export default Login;

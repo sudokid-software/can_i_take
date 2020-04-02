@@ -1,7 +1,9 @@
 // import { Link } from "wouter";
-import React, { useReducer, useRef } from "react";
+import React, { useReducer } from "react";
 import Nav from "../../../components/NavBar/Navbar";
 import { reducer, init } from "./reducer";
+
+import "./Register.scss";
 
 const Register = (props) => {
   console.log(props);
@@ -70,4 +72,4 @@ const Register = (props) => {
   )
 };
 
-export { Register };
+export default Register;
