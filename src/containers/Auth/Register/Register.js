@@ -11,9 +11,9 @@ const Register = ({initial}) => {
   const form = useRef(null);
   let errors = useRef(false);
 
-  const onChangeHandler = ({name, value}) => {
-    console.log(name, value);
-    setUsername({username: name});
+  const onChangeHandler = (e) => {
+    console.log(e);
+    setUsername({type: 'addUsername', username: e.target.value});
   };
 
   const handleClick = (event) => {

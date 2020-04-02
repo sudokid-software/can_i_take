@@ -2,7 +2,7 @@ const init = (usernames) =>{
     return {username: usernames};
   };
   
- const reducer = (state, action) => {
+ const reducer = (state = init, action) => {
     switch (action.type) {
       case 'addUsername':
         state.username = action.username;

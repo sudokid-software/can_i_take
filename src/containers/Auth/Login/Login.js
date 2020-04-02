@@ -6,8 +6,8 @@ import { reducer, init } from "../reducer";
 const Login = ({UserContext, initial}) => {
   const [username, setUsername] = useReducer(reducer, initial, init);
 
-  const onChangeHandler = ({name, value}) => {
-    setUsername({username: name});
+  const onChangeHandler = (e) => {
+    setUsername({type: 'addUsername', username: e.target.value});
   }
   return (
     <div>
