@@ -12,7 +12,7 @@ const Nav = () => {
             Home
           </Link>
         </li>
-        {true?<li><Link className="nav-link" href={"/logout"}>Logout</Link></li>
+        {false?<li><Link className="nav-link" href={"/logout"}>Logout</Link></li>
           : <Fragment>
             <li>
               <Link className="nav-link" href={"/login"}>

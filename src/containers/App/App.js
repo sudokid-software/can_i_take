@@ -14,7 +14,7 @@ import './App.scss';
 const App = () => {
   return (
     <Switch>
-      <Route path="/register" component={() => true?<Main/>:<Register initialValues={registerInit()} /> }/>
+      <Route path="/register" component={() => false?<Main/>:<Register initialValues={registerInit()} /> }/>
       <Route path="/login" component={() => <Login initialValues={registerInit()} /> } />
       <Route path="/main" component={() => <Main initialValues={registerInit()} /> } />
       <Route path="/" component={Home}/>

@@ -62,6 +62,7 @@ const AuthForm = props => {
       company
     })
       .then(function (response) {
+        localStorage.setItem('user', JSON.stringify(response.data));
         console.log(response);
       })
       .catch(function (error) {
@@ -73,9 +74,10 @@ const AuthForm = props => {
     const {username, password1} = formData;
     axios.post('http://localhost:4000/api/user/login', {
       username,
-      password1,
+      password: password1,
     })
       .then(function (response) {
+        localStorage.setItem('user', JSON.stringify(response.data));
         console.log(response);
       })
       .catch(function (error) {
