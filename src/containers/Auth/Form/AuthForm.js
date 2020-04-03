@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, Fragment } from "react";
 import PropTypes from "prop-types";
 import axios from 'axios';
 import { reducer, init } from "./auth-form.reducer";
@@ -40,8 +40,8 @@ const AuthForm = props => {
   };
 
   const onSubmitHandler = event => {
-    event.preventDefault();
     if (checkForErrors()) {
+      event.preventDefault();
       return;
     }
 
@@ -53,12 +53,13 @@ const AuthForm = props => {
   };
 
   const handleRegister = () => {
-    const {username, email, password1, password2} = formData;
+    const {username, email, password1, password2, company} = formData;
     axios.post('http://localhost:4000/api/user/register', {
       username,
       email,
       password1,
-      password2
+      password2,
+      company
     })
       .then(function (response) {
         console.log(response);
@@ -69,15 +70,29 @@ const AuthForm = props => {
   };
 
   const handleLogin = () => {
+    const {username, password1} = formData;
+    axios.post('http://localhost:4000/api/user/login', {
+      username,
+      password1,
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
-    <div className="auth-form">
+    <form className="auth-form">
       {props.heading ? <h1 className="auth-form--heading">{props.heading}</h1> : null}
       {/* Registration Email field */}
       {error!==''?<span>{error}</span>:null}
       {props.isRegister ? (
-        <input type="text" name="email" placeholder="Email" onChange={onChangeHandler} required />
+        <Fragment>
+          <input type="email" name="email" placeholder="Email" onChange={onChangeHandler} required />
+          <input type="text" name="company" placeholder="Company Code" onChange={onChangeHandler} />
+        </Fragment>
       ) : null}
       <input
         type="text"
@@ -104,7 +119,7 @@ const AuthForm = props => {
         />
       ) : null}
       <button onClick={onSubmitHandler}>{props.isRegister ? "Register" : "Login"}</button>
-    </div>
+    </form>
   );
 };
 

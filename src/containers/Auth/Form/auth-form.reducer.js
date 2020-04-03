@@ -3,7 +3,8 @@ const init = () =>{
     username: '',
     email: '',
     password1: '',
-    password2: ''
+    password2: '',
+    company: ''
   };
 };
 
@@ -12,7 +13,8 @@ const initialValues = {
     username: '',
     email: '',
     password1: '',
-    password2: ''
+    password2: '',
+    company: ''
   }
 };
 
