@@ -1,25 +1,18 @@
 // import { Link } from "wouter";
-import React, { useReducer } from "react";
-import Nav from "../../../components/NavBar/Navbar";
+import React, { Fragment } from "react";
+import Navigation from "../../../components/Navigation/Navigation";
+import AuthForm from '../Form/AuthForm';
 
-const Login = ({props, onChangeHandler}) => {
-
-  
+const Login = () => {
   return (
-    <div>
-      <Nav/>
-      <h1>Login</h1>
-      <div>
-        <form>
-          <input type="text"
-                 name="user_name"
-                 placeholder="User Name" onChange={onChangeHandler} />
-          <input type="password"
-                 name="password1"
-                 placeholder="Password"/>
-        </form>
-      </div>
-    </div>
+    <Fragment>
+      <Navigation />
+      <main className="page-wrapper">
+        <div className="modal-wrapper">
+          <AuthForm heading="Login" isLogin={true} />
+        </div>
+      </main>
+    </Fragment>
   )
 };
 

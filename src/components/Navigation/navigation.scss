@@ -1,0 +1,21 @@
+nav {
+  background-color: aqua;
+
+  ol {
+    li {
+      display: inline;
+      margin-left: 30px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .nav {
+    &-link {
+      display: inline-block; // give some block element styling to the anchor
+      padding: 15px 0;
+    }
+  }
+}
