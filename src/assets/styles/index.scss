@@ -1,0 +1,15 @@
+@import './includes/functions';
+@import './includes/placeholders';
+@import './includes/wrappers';
+
+@import './globals/reset';
+@import './globals/typography';
+
+// Put all CSS variables here
+:root {
+  --pagePadding: 30px;
+}
+// Put all JS selectors here
+#root {
+  height: 100%;
+}

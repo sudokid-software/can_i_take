@@ -1,0 +1,13 @@
+@import './functions';
+
+%constrain-content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 1028px;
+  margin: 0 auto;
+
+  @include breakpoint( sm ){
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

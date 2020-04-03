@@ -1,0 +1,10 @@
+.page-wrapper {
+  @extend %constrain-content;
+}
+
+.modal-wrapper {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: var(--pagePadding);
+  background-color: white;
+}

@@ -1,13 +1,19 @@
-// import { Link } from "wouter";
-import './Navbar.css';
-import React from "react";
+import React, { Fragment } from "react";
 
-const Nav = () => {
+import Navigation from "../../components/Navigation/Navigation";
+
+const Main = () => {
   return (
-    <div>
-      <h1>BODY!</h1>
-    </div>
-  )
+    <Fragment>
+      <Navigation />
+      <main className="page-wrapper">
+        <div className="modal-wrapper">
+          <h1>Can I Take</h1>
+          <h6>You have logged in!</h6>
+        </div>
+      </main>
+    </Fragment>
+  );
 };
 
-export default Nav;
+export default Main;
