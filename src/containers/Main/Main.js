@@ -2,7 +2,7 @@
 import './Navbar.css';
 import React from "react";
 
-const Nav = () => {
+const Main = () => {
   return (
     <div>
       <h1>BODY!</h1>
@@ -10,4 +10,4 @@ const Nav = () => {
   )
 };
 
-export default Nav;
+export default Main;

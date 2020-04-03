@@ -6,7 +6,6 @@ import { reducer, init } from "./reducer";
 import "./Register.scss";
 
 const Register = (props) => {
-  console.log(props);
   const [formData, setFormData] = useReducer(reducer, props, init);
   const form = useRef(null);
   let [error, setError] = useState('');
@@ -18,14 +17,6 @@ const Register = (props) => {
   const handleClick = async (event) => {
     event.preventDefault();
 
-    fetch('/manifest.json')
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
-
     const {username, email, password1, password2} = formData;
     if (
       username === '' || email === '' || password1 === '' || password2 === ''
@@ -35,9 +26,24 @@ const Register = (props) => {
       return setError('Please make sure that your passwords match');
     }
 
+    fetch('http://localhost:4000/api/user', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({username, email, password1, password2})
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
+
     setError('');
     // document
-    window.location.href = window.location.origin + '/main'
+    // window.location.href = window.location.origin + '/main'
   };
 
   return (

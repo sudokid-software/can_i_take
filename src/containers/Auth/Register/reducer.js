@@ -1,11 +1,24 @@
-const init = () =>{
-    return {
-      username: '',
-      email: '',
-      password1: '',
-      password2: ''
-    };
+const buildThing = ({active, color, prHandString}) => {
+  let returnValue = {
+    color,
+    prHandString
   };
+  if (active === true || active === false) {
+    returnValue = Object.assign({}, returnValue, {
+      active
+    });
+  }
+  return returnValue;
+};
+
+const init = () =>{
+  return {
+    username: '',
+    email: '',
+    password1: '',
+    password2: ''
+  };
+};
 
 const initialValues = {
     initialValues: {
